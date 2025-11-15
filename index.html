@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +13,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #F7F5F3;
         }
         
         .modal-backdrop {
@@ -48,33 +48,53 @@
             }
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #FF6B4A 0%, #FF8C6A 100%);
+        /* Boutons Hormur */
+        .btn-primary-hormur {
+            background-color: #EB6E52;
+            color: white;
+            border-radius: 18px;
+            height: 48px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(235, 110, 82, 0.2);
+        }
+        
+        .btn-primary-hormur:hover {
+            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(235, 110, 82, 0.3);
+        }
+        
+        .btn-secondary-hormur {
+            background-color: #3A3A63;
+            color: white;
+            border-radius: 18px;
+            height: 48px;
             transition: all 0.2s ease;
         }
         
-        .btn-primary:hover {
+        .btn-secondary-hormur:hover {
+            opacity: 0.9;
+        }
+
+        .btn-tertiary-hormur {
+            background-color: #F7D3C5;
+            color: #3A3A63;
+            border-radius: 18px;
+            height: 48px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-tertiary-hormur:hover {
+            opacity: 0.9;
+        }
+
+        /* Cards Hormur */
+        .card-option-hormur {
+            transition: all 0.2s ease;
+        }
+
+        .card-option-hormur:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(255, 107, 74, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.2s ease;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #f3f4f6;
-            transform: translateY(-1px);
-        }
-
-        .card-option {
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .card-option:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -104,134 +124,184 @@
 
         // Icônes SVG
         const Icons = {
-            Check: () => (
-                <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            ),
             Location: () => (
-                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" style={{ color: '#EB6E52' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             ),
             Calendar: () => (
-                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" style={{ color: '#EB6E52' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
             ),
             Clock: () => (
-                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" style={{ color: '#EB6E52' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             ),
             Users: () => (
-                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" style={{ color: '#EB6E52' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
             ),
-            Message: () => (
-                <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-            ),
-            CalendarCheck: () => (
-                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-            ),
             ArrowLeft: () => (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" style={{ color: '#3A3A63' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-            ),
-            Close: () => (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
             )
         };
 
-        // Composant Modal
+        // Composant Modal Hormur
         function AcceptanceModal({ isOpen, onClose, onDiscuss, onCreate, eventDate }) {
             if (!isOpen) return null;
 
             return (
                 <div 
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop fade-in" 
-                    style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
+                    style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(4px)' }}
                 >
-                    <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl slide-up">
+                    <div 
+                        className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto slide-up"
+                        style={{ 
+                            borderRadius: '18px',
+                            boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)'
+                        }}
+                    >
                         {/* Header */}
-                        <div className="p-6 border-b border-gray-100">
-                            <div className="text-center pt-2">
-                                <Icons.Check />
-                                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                                    Dernière étape !
+                        <div className="p-6 sm:p-8">
+                            <div className="text-center">
+                                <h2 className="text-2xl font-semibold mb-4" style={{ color: '#3A3A63' }}>
+                                    Comment souhaitez-vous continuer ?
                                 </h2>
-                                <p className="text-gray-600 text-lg">
-                                    Pour <strong>finaliser votre acceptation</strong>, choisissez comment vous souhaitez continuer
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Date reminder */}
-                        <div className="px-6 py-4 bg-orange-50 border-l-4 border-orange-400">
-                            <div className="flex items-center gap-2 text-orange-800">
-                                <Icons.Calendar />
-                                <span className="font-medium">{eventDate}</span>
+                                
+                                {/* Date pastille */}
+                                <div 
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 mb-6"
+                                    style={{ 
+                                        backgroundColor: '#F7D3C5',
+                                        borderRadius: '18px'
+                                    }}
+                                >
+                                    <svg className="w-5 h-5" style={{ color: '#EB6E52' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span className="font-medium text-base" style={{ color: '#3A3A63' }}>
+                                        {eventDate}
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
                         {/* Options */}
-                        <div className="p-6 space-y-4">
-                            {/* Option 1: Discuss */}
+                        <div className="px-6 sm:px-8 pb-8 space-y-4">
+                            {/* Option 1: Créer directement */}
                             <div 
-                                onClick={onDiscuss}
-                                className="card-option border-2 border-blue-200 rounded-xl p-6 bg-blue-50 hover:border-blue-400"
+                                className="card-option-hormur cursor-pointer transition-all duration-200"
+                                style={{
+                                    backgroundColor: '#F7D3C5',
+                                    border: '2px solid #EB6E52',
+                                    borderRadius: '18px',
+                                    padding: '24px'
+                                }}
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0">
-                                        <Icons.Message />
+                                    <div 
+                                        className="flex-shrink-0 w-12 h-12 flex items-center justify-center"
+                                        style={{
+                                            backgroundColor: '#EB6E52',
+                                            borderRadius: '12px'
+                                        }}
+                                    >
+                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">Discuter de la date</h3>
-                                        <p className="text-gray-600 mb-4">Échanger avec l'artiste pour trouver ensemble la date et l'heure qui vous conviennent le mieux</p>
-                                        <button className="w-full sm:w-auto px-6 py-2.5 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors">
-                                            Ouvrir la messagerie
+                                        <h3 className="text-lg font-semibold mb-2" style={{ color: '#3A3A63' }}>
+                                            Créer l'événement à cette date
+                                        </h3>
+                                        <p className="text-sm mb-4" style={{ color: '#444', lineHeight: '1.5' }}>
+                                            Valider directement l'événement pour le <strong>{eventDate}</strong>. Vous pourrez ensuite le personnaliser.
+                                        </p>
+                                        <button 
+                                            onClick={onCreate}
+                                            className="w-full sm:w-auto px-6 font-medium transition-all duration-200 hover:opacity-90"
+                                            style={{
+                                                backgroundColor: '#EB6E52',
+                                                color: 'white',
+                                                borderRadius: '18px',
+                                                height: '48px',
+                                                boxShadow: '0 2px 8px rgba(235, 110, 82, 0.2)'
+                                            }}
+                                        >
+                                            Créer l'événement
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Option 2: Create */}
+                            {/* Option 2: Échanger */}
                             <div 
-                                onClick={onCreate}
-                                className="card-option border-2 border-orange-200 rounded-xl p-6 bg-orange-50 hover:border-orange-400"
+                                className="card-option-hormur cursor-pointer transition-all duration-200"
+                                style={{
+                                    backgroundColor: '#FFFFFF',
+                                    border: '2px solid #E5E7EB',
+                                    borderRadius: '18px',
+                                    padding: '24px'
+                                }}
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0">
-                                        <Icons.CalendarCheck />
+                                    <div 
+                                        className="flex-shrink-0 w-12 h-12 flex items-center justify-center"
+                                        style={{
+                                            backgroundColor: '#E3DDF3',
+                                            borderRadius: '12px'
+                                        }}
+                                    >
+                                        <svg className="w-6 h-6" style={{ color: '#3A3A63' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                        </svg>
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">Confirmer cette date</h3>
-                                        <p className="text-gray-600 mb-4">Valider l'événement pour le <strong>{eventDate}</strong>. Vous pourrez ensuite le personnaliser (titre, description, image...)</p>
-                                        <button className="w-full sm:w-auto px-6 py-2.5 btn-primary text-white rounded-lg font-medium">
-                                            Valider et créer l'événement
+                                        <h3 className="text-lg font-semibold mb-2" style={{ color: '#3A3A63' }}>
+                                            Échanger pour convenir d'une date
+                                        </h3>
+                                        <p className="text-sm mb-4" style={{ color: '#444', lineHeight: '1.5' }}>
+                                            Discuter avec l'artiste pour trouver ensemble la date et l'heure qui conviennent le mieux.
+                                        </p>
+                                        <button 
+                                            onClick={onDiscuss}
+                                            className="w-full sm:w-auto px-6 font-medium transition-all duration-200 hover:opacity-90"
+                                            style={{
+                                                backgroundColor: '#F7D3C5',
+                                                color: '#3A3A63',
+                                                borderRadius: '18px',
+                                                height: '48px'
+                                            }}
+                                        >
+                                            Échanger avec l'artiste
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Footer avec avertissement */}
-                        <div className="p-6 border-t border-gray-100">
-                            <div className="flex items-start gap-3 text-sm text-gray-600 bg-gray-50 rounded-lg p-4">
-                                <svg className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {/* Footer subtil */}
+                        <div className="px-6 sm:px-8 pb-6">
+                            <div 
+                                className="flex items-start gap-3 text-sm p-4"
+                                style={{
+                                    backgroundColor: '#F7F5F3',
+                                    borderRadius: '12px',
+                                    color: '#444'
+                                }}
+                            >
+                                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: '#3A3A63', opacity: 0.6 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <p>
-                                    <strong>Action requise :</strong> Vous devez choisir l'une des deux options ci-dessus pour officialiser votre acceptation. L'artiste sera notifié une fois votre choix confirmé.
+                                <p style={{ lineHeight: '1.5' }}>
+                                    Choisissez l'une des deux options pour finaliser votre acceptation. L'artiste sera notifié une fois votre choix confirmé.
                                 </p>
                             </div>
                         </div>
@@ -270,15 +340,18 @@
             };
 
             return (
-                <div className="min-h-screen bg-gray-50">
+                <div className="min-h-screen" style={{ backgroundColor: '#F7F5F3' }}>
                     {/* Header */}
-                    <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
+                    <header className="bg-white border-b sticky top-0 z-40" style={{ borderColor: '#E5E7EB' }}>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex items-center justify-between h-16">
-                                <button className="text-gray-600 hover:text-gray-900 transition-colors">
+                                <button className="transition-colors hover:opacity-80">
                                     <Icons.ArrowLeft />
                                 </button>
-                                <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">
+                                <div className="text-2xl font-bold" style={{ 
+                                    color: '#EB6E52',
+                                    letterSpacing: '-0.02em'
+                                }}>
                                     HORMUR
                                 </div>
                                 <div className="w-6"></div>
@@ -292,29 +365,30 @@
                         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
                             {/* Left column - Artist info */}
                             <div className="lg:col-span-4 mb-8 lg:mb-0">
-                                <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+                                <div className="bg-white p-6 sticky top-24" style={{ borderRadius: '18px', boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)' }}>
                                     {/* Artist photo */}
                                     <div className="relative w-32 h-32 mx-auto mb-4">
                                         <img 
                                             src={proposalData.artist.photo} 
                                             alt={proposalData.artist.name}
-                                            className="w-full h-full rounded-full object-cover border-4 border-orange-100"
+                                            className="w-full h-full object-cover"
+                                            style={{ borderRadius: '50%', border: '4px solid #F7D3C5' }}
                                         />
                                     </div>
 
                                     {/* Artist name */}
-                                    <h1 className="text-2xl font-bold text-center text-gray-900 mb-2">
+                                    <h1 className="text-2xl font-bold text-center mb-2" style={{ color: '#3A3A63' }}>
                                         {proposalData.artist.name}
                                     </h1>
 
                                     {/* Artist type */}
-                                    <p className="text-center text-gray-600 mb-4">
+                                    <p className="text-center mb-4" style={{ color: '#444' }}>
                                         {proposalData.artist.type}
                                     </p>
 
                                     {/* Category badge */}
                                     <div className="flex justify-center mb-6">
-                                        <span className="px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">
+                                        <span className="px-4 py-1.5 text-sm font-medium" style={{ backgroundColor: '#F7D3C5', color: '#EB6E52', borderRadius: '18px' }}>
                                             {proposalData.artist.category}
                                         </span>
                                     </div>
@@ -323,13 +397,13 @@
                                     <div className="lg:hidden space-y-3 pt-4 border-t border-gray-100">
                                         <button 
                                             onClick={handleRefuse}
-                                            className="btn-secondary w-full px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold"
+                                            className="btn-secondary-hormur w-full px-6 py-3 font-semibold"
                                         >
                                             Refuser
                                         </button>
                                         <button 
                                             onClick={handleAccept}
-                                            className="btn-primary w-full px-6 py-3 text-white rounded-xl font-semibold shadow-lg"
+                                            className="btn-primary-hormur w-full px-6 py-3 font-semibold"
                                         >
                                             Accepter
                                         </button>
@@ -339,48 +413,60 @@
 
                             {/* Center column - Event details */}
                             <div className="lg:col-span-5 mb-8 lg:mb-0">
-                                <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-                                    <h2 className="text-xl font-bold text-gray-900 mb-6">Détails de la proposition</h2>
+                                <div className="bg-white p-6 sm:p-8" style={{ borderRadius: '18px', boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)' }}>
+                                    <h2 className="text-xl font-bold mb-6" style={{ color: '#3A3A63' }}>
+                                        Détails de la proposition
+                                    </h2>
 
                                     {/* Event info items */}
                                     <div className="space-y-4 mb-8">
                                         <div className="flex items-center gap-3">
                                             <Icons.Location />
                                             <div>
-                                                <p className="text-sm text-gray-500">Lieu</p>
-                                                <p className="font-semibold text-gray-900">{proposalData.event.venue}</p>
+                                                <p className="text-sm" style={{ color: '#888' }}>Lieu</p>
+                                                <p className="font-semibold" style={{ color: '#3A3A63' }}>
+                                                    {proposalData.event.venue}
+                                                </p>
                                             </div>
                                         </div>
 
                                         <div className="flex items-center gap-3">
                                             <Icons.Calendar />
                                             <div>
-                                                <p className="text-sm text-gray-500">Date</p>
-                                                <p className="font-semibold text-gray-900">{proposalData.event.date}</p>
+                                                <p className="text-sm" style={{ color: '#888' }}>Date</p>
+                                                <p className="font-semibold" style={{ color: '#3A3A63' }}>
+                                                    {proposalData.event.date}
+                                                </p>
                                             </div>
                                         </div>
 
                                         <div className="flex items-center gap-3">
                                             <Icons.Clock />
                                             <div>
-                                                <p className="text-sm text-gray-500">Heure</p>
-                                                <p className="font-semibold text-gray-900">{proposalData.event.time}</p>
+                                                <p className="text-sm" style={{ color: '#888' }}>Heure</p>
+                                                <p className="font-semibold" style={{ color: '#3A3A63' }}>
+                                                    {proposalData.event.time}
+                                                </p>
                                             </div>
                                         </div>
 
                                         <div className="flex items-center gap-3">
                                             <Icons.Users />
                                             <div>
-                                                <p className="text-sm text-gray-500">Capacité</p>
-                                                <p className="font-semibold text-gray-900">{proposalData.event.capacity}</p>
+                                                <p className="text-sm" style={{ color: '#888' }}>Capacité</p>
+                                                <p className="font-semibold" style={{ color: '#3A3A63' }}>
+                                                    {proposalData.event.capacity}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Description */}
                                     <div className="pt-6 border-t border-gray-100">
-                                        <h3 className="font-bold text-gray-900 mb-3">À propos de l'artiste</h3>
-                                        <p className="text-gray-600 leading-relaxed">
+                                        <h3 className="font-bold mb-3" style={{ color: '#3A3A63' }}>
+                                            À propos de l'artiste
+                                        </h3>
+                                        <p className="leading-relaxed" style={{ color: '#444' }}>
                                             {proposalData.artist.description}
                                         </p>
                                     </div>
@@ -389,26 +475,28 @@
 
                             {/* Right column - Actions (desktop only) */}
                             <div className="hidden lg:block lg:col-span-3">
-                                <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-                                    <h3 className="text-lg font-bold text-gray-900 mb-4">Votre réponse</h3>
+                                <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24" style={{ boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)' }}>
+                                    <h3 className="text-lg font-bold mb-4" style={{ color: '#3A3A63' }}>
+                                        Votre réponse
+                                    </h3>
                                     
                                     <div className="space-y-3">
                                         <button 
                                             onClick={handleRefuse}
-                                            className="btn-secondary w-full px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold"
+                                            className="btn-secondary-hormur w-full px-6 py-3 font-semibold"
                                         >
                                             Refuser
                                         </button>
                                         
                                         <button 
                                             onClick={handleAccept}
-                                            className="btn-primary w-full px-6 py-3 text-white rounded-xl font-semibold shadow-lg"
+                                            className="btn-primary-hormur w-full px-6 py-3 font-semibold"
                                         >
                                             Accepter
                                         </button>
                                     </div>
 
-                                    <p className="text-sm text-gray-500 mt-4 text-center">
+                                    <p className="text-sm mt-4 text-center" style={{ color: '#444' }}>
                                         En acceptant, vous pourrez choisir comment continuer
                                     </p>
                                 </div>
